@@ -2,13 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from projects.models import Project
 
-# not sure if I need to specifically use the auth_user model, regular old User passes the tests and is
-# more in line with how we've done things, well leave the code commented out for future reference.
-
-# from django.conf import settings
-
-# USER_MODEL = settings.AUTH_USER_MODEL
-
 
 # Create your models here.
 class Task(models.Model):
