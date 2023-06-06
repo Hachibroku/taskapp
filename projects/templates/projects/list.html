@@ -12,9 +12,9 @@
     <main>
         <div>
             <h1>My Projects</h1>
-            {% if not user.projects %}
+            {% if not user.projects.exists %}
             <p>You are not assigned to any projects</p>
-            {% endif %}
+            {% else %}
             <table>
                 <thead>
                     <tr>
@@ -31,6 +31,7 @@
                     {% endfor %}
                 </tbody>
             </table>
+            {% endif %}
         </div>
     </main>
 </body>
