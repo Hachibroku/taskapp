@@ -11,32 +11,33 @@
 <body>
     <main>
         <div>
-            <h1>My Projects</h1>
-            <p><a href="{% url 'create_project' %}">Create a new project</a></p>
-            {% if not user.projects.exists %}
-            <p>You are not assigned to any projects</p>
-            {% else %}
+            <h1>My Tasks</h1>
+            {% if user.tasks.exists %}
             <table>
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Number of tasks</th>
+                        <th>Start date</th>
+                        <th>Due date</th>
+                        <th>Is completed</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for project in projects %}
+                    {% for task in tasks %}
                     <tr>
-                        <td><a href="{% url 'show_project' project.id %}">{{ project.name }}</a></td>
-                        <td>{{ project.tasks.all|length }}</td>
+                        <td>{{ task.name }}</td>
+                        <td>{{ task.start_date }}</td>
+                        <td>{{ task.due_date }}</td>
+                        <td>{{ task.is_completed|yesno }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
+            {% else %}
+            <p>You have no tasks</p>
             {% endif %}
         </div>
     </main>
 </body>
 
 </html>
-
-<!-- replace endif with else, add endif after endfor, should convert it back to rendering as per the instructions/screenshots -->
